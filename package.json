@@ -7,7 +7,8 @@
     "dev": "tsx watch src/server/server.ts",
     "dev:frontend": "vite",
     "build": "tsc && vite build",
-    "start": "node dist/server.js",
+    "preview": "vite preview",
+    "start": "tsx src/server/server.ts",
     "db:seed": "tsx src/server/db/seed.ts",
     "test": "tsx src/server/tests/run_tests.ts && tsx src/server/tests/api_integration_test.ts",
     "typecheck": "tsc --noEmit"
@@ -20,6 +21,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^3.0.1",
+    "tsx": "^4.19.3",
     "zod": "^3.24.2"
   },
   "devDependencies": {
@@ -32,7 +34,6 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.2",
     "tailwindcss": "^3.4.17",
-    "tsx": "^4.19.3",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
   }
