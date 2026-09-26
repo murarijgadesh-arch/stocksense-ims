@@ -24,6 +24,9 @@ const LOW_STOCK_ALERTS = [
   { sku: "SKU-10388", name: "USB-C Dock Station", current: 12, threshold: 20, warehouse: "North Hub" },
   { sku: "SKU-10712", name: "Pallet Wrap Heavy", current: 9, threshold: 18, warehouse: "North Hub" },
   { sku: "SKU-10440", name: "Stainless Bolt M8", current: 0, threshold: 25, warehouse: "Port Annex" },
+  { sku: "SKU-10874", name: "Industrial Sensor Kit", current: 22, threshold: 30, warehouse: "Central Depot" },
+  { sku: "SKU-10991", name: "Steel Bracket 120mm", current: 5, threshold: 18, warehouse: "North Hub" },
+  { sku: "SKU-11042", name: "Conveyor Belt Strip", current: 0, threshold: 35, warehouse: "Port Annex" },
 ];
 
 const TONE: Record<string, string> = {
@@ -46,6 +49,9 @@ const ROWS: [string, string, string, string, string][] = [
   ["ADJ-0342", "Adjustment", "Port Annex", "Draft", "Sep 23"],
   ["DLV-1187", "Delivery", "Retail Backstore", "Pending", "Sep 23"],
   ["RCP-2040", "Receipt", "Central Depot", "Completed", "Sep 22"],
+  ["TRF-2718", "Transfer", "North Hub", "Pending", "Sep 22"],
+  ["RCP-2039", "Receipt", "Port Annex", "Completed", "Sep 21"],
+  ["ADJ-0338", "Adjustment", "Central Depot", "Completed", "Sep 21"],
 ];
 
 const STATUS_STYLE: Record<string, string> = {

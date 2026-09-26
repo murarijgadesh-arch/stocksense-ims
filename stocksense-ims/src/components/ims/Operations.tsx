@@ -35,6 +35,12 @@ const PRODUCT_CATALOG: ProductStock[] = [
   { sku: "SKU-10512", name: "Aluminium Sheet 2mm", warehouse: "Central Depot", location: "Rack D-05", available: 326, threshold: 80, category: "Raw materials" },
   { sku: "SKU-10677", name: "Barcode Scanner X2", warehouse: "Retail Backstore", location: "Rack E-07", available: 47, threshold: 30, category: "Electronics" },
   { sku: "SKU-10712", name: "Pallet Wrap Heavy", warehouse: "North Hub", location: "Rack B-11", available: 9, threshold: 18, category: "Packaging" },
+  { sku: "SKU-10821", name: "Safety Gloves L", warehouse: "Port Annex", location: "Rack C-08", available: 41, threshold: 22, category: "Warehousing" },
+  { sku: "SKU-10874", name: "Industrial Sensor Kit", warehouse: "Central Depot", location: "Rack A-15", available: 22, threshold: 30, category: "Electronics" },
+  { sku: "SKU-10905", name: "HDPE Trolley Bin", warehouse: "Retail Backstore", location: "Rack E-12", available: 86, threshold: 20, category: "Packaging" },
+  { sku: "SKU-10991", name: "Steel Bracket 120mm", warehouse: "North Hub", location: "Rack F-03", available: 5, threshold: 18, category: "Spare parts" },
+  { sku: "SKU-11042", name: "Conveyor Belt Strip", warehouse: "Port Annex", location: "Rack H-09", available: 0, threshold: 35, category: "Raw materials" },
+  { sku: "SKU-11103", name: "RFID Tag Pack", warehouse: "Central Depot", location: "Rack D-09", available: 320, threshold: 45, category: "Electronics" },
 ];
 
 const WAREHOUSES = ["Central Depot", "North Hub", "Port Annex", "Retail Backstore"] as const;

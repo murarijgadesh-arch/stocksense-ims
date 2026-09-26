@@ -21,6 +21,12 @@ const PRODUCTS = [
   ["SKU-10512", "Aluminium Sheet 2mm", "Raw materials", "Central Depot", 326, "In stock"],
   ["SKU-10677", "Barcode Scanner X2", "Electronics", "Retail Backstore", 47, "In stock"],
   ["SKU-10712", "Pallet Wrap Heavy", "Packaging", "North Hub", 9, "Low stock"],
+  ["SKU-10821", "Safety Gloves L", "Warehousing", "Port Annex", 41, "In stock"],
+  ["SKU-10874", "Industrial Sensor Kit", "Electronics", "Central Depot", 22, "Low stock"],
+  ["SKU-10905", "HDPE Trolley Bin", "Packaging", "Retail Backstore", 86, "In stock"],
+  ["SKU-10991", "Steel Bracket 120mm", "Spare parts", "North Hub", 5, "Low stock"],
+  ["SKU-11042", "Conveyor Belt Strip", "Raw materials", "Port Annex", 0, "Out of stock"],
+  ["SKU-11103", "RFID Tag Pack", "Electronics", "Central Depot", 320, "In stock"],
 ] as const;
 
 const STATUS: Record<string, string> = {
