@@ -50,6 +50,14 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (name: string) 
               </div>
             ))}
           </div>
+          <div className="rounded-2xl border border-sidebar-border bg-sidebar-accent/10 p-4 text-sm text-sidebar-foreground/80">
+            <p className="font-medium text-sidebar-accent-foreground">Live network pulse</p>
+            <ul className="mt-3 space-y-2">
+              <li>• 3 warehouse teams synced this morning</li>
+              <li>• 2 transfer approvals pending review</li>
+              <li>• 1 stock discrepancy flagged for audit</li>
+            </ul>
+          </div>
         </div>
         <dl className="grid grid-cols-3 gap-6 border-t border-sidebar-border pt-6">
           {[

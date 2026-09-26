@@ -77,14 +77,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "theme-color", content: "#0f172a" },
+      { name: "application-name", content: "StockSense IMS" },
+      { title: "StockSense IMS — Inventory Management System" },
+      {
+        name: "description",
+        content:
+          "StockSense IMS gives warehouse teams real-time stock visibility, low-stock alerts, transfer tracking, and operational controls.",
+      },
+      { name: "author", content: "StockSense" },
+      { property: "og:title", content: "StockSense IMS — Inventory Management System" },
+      {
+        property: "og:description",
+        content:
+          "Track stock, receipts, deliveries and adjustments across every warehouse in one clean dashboard.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@stocksense" },
     ],
     links: [
       {

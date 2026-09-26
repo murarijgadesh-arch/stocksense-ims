@@ -76,18 +76,54 @@ export function DashboardView() {
 
       <div className="grid gap-4 lg:grid-cols-3">
         {[
-          { title: "Inventory health", text: "3 SKUs are approaching the reorder threshold across the network." },
-          { title: "Put-away speed", text: "Receipts are moving 14% faster than last week with tighter warehouse routing." },
-          { title: "Warehouse focus", text: "North Hub and Port Annex need follow-up on open discrepancies before close of day." },
+          {
+            title: "Inventory health",
+            text: "3 SKUs are approaching the reorder threshold across the network.",
+            detail: "Reorder queue: 2 urgent",
+          },
+          {
+            title: "Put-away speed",
+            text: "Receipts are moving 14% faster than last week with tighter warehouse routing.",
+            detail: "Timeliness: 94% on plan",
+          },
+          {
+            title: "Warehouse focus",
+            text: "North Hub and Port Annex need follow-up on open discrepancies before close of day.",
+            detail: "Open actions: 7",
+          },
         ].map((item) => (
           <Card key={item.title} className="shadow-card">
             <CardContent className="p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.title}</p>
               <p className="mt-3 text-sm leading-6 text-foreground">{item.text}</p>
+              <p className="mt-4 text-xs font-medium text-primary">{item.detail}</p>
             </CardContent>
           </Card>
         ))}
       </div>
+
+      <Card className="shadow-card">
+        <CardHeader className="border-b">
+          <CardTitle className="text-base">Operational snapshot</CardTitle>
+        </CardHeader>
+        <CardContent className="grid gap-4 p-4 md:grid-cols-2 xl:grid-cols-3">
+          {[
+            { label: "Cycle count completion", value: 82, tone: "bg-primary" },
+            { label: "Transfer clearance", value: 67, tone: "bg-success" },
+            { label: "Issue resolution", value: 91, tone: "bg-warning" },
+          ].map((metric) => (
+            <div key={metric.label} className="rounded-xl border bg-muted/30 p-4">
+              <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
+                <span>{metric.label}</span>
+                <span className="font-medium text-foreground">{metric.value}%</span>
+              </div>
+              <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-muted">
+                <div className={`h-full rounded-full ${metric.tone}`} style={{ width: `${metric.value}%` }} />
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
 
       <Card className="shadow-card">
         <CardHeader className="flex flex-row items-center justify-between gap-4 border-b">
