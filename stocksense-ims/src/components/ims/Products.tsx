@@ -1,4 +1,5 @@
-import { Plus, Search, Package } from "lucide-react";
+import { Package, Plus, Search } from "lucide-react";
+import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,20 @@ const STATUS: Record<string, string> = {
 };
 
 export function ProductsView() {
+  const [search, setSearch] = useState("");
+
+  const filteredProducts = useMemo(() => {
+    const term = search.trim().toLowerCase();
+
+    if (!term) {
+      return PRODUCTS;
+    }
+
+    return PRODUCTS.filter(([sku, name]) => `${sku} ${name}`.toLowerCase().includes(term));
+  }, [search]);
+
+  const topMatch = filteredProducts[0];
+
   return (
     <Card className="shadow-card">
       <CardHeader className="gap-4 border-b sm:flex-row sm:items-center sm:justify-between">
@@ -39,7 +54,12 @@ export function ProductsView() {
         <div className="flex flex-col gap-2 sm:flex-row">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search SKU or name" className="pl-9 sm:w-60" />
+            <Input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search SKU or Product"
+              className="pl-9 sm:w-60"
+            />
           </div>
           <Select defaultValue="All categories">
             <SelectTrigger className="sm:w-44">
@@ -58,7 +78,28 @@ export function ProductsView() {
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="p-0">
+      <CardContent className="space-y-4 p-0">
+        {search.trim() && topMatch && (
+          <div className="border-b bg-accent/20 p-4">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground">Quick result</p>
+            <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="font-medium">{topMatch[0]}</p>
+                <p className="text-sm text-muted-foreground">{topMatch[1]}</p>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Available: <span className="font-medium text-foreground">{topMatch[4]}</span>
+                <span className="mx-2">•</span>
+                Warehouse: {topMatch[3]}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {search.trim() && filteredProducts.length === 0 && (
+          <div className="border-b p-4 text-sm text-muted-foreground">No products match your search.</div>
+        )}
+
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
@@ -72,7 +113,7 @@ export function ProductsView() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {PRODUCTS.map(([sku, name, cat, wh, qty, status]) => (
+              {filteredProducts.map(([sku, name, cat, wh, qty, status]) => (
                 <TableRow key={sku}>
                   <TableCell className="font-medium">{sku}</TableCell>
                   <TableCell>{name}</TableCell>

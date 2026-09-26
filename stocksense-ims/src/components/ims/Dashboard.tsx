@@ -1,4 +1,4 @@
-import { Package, AlertTriangle, Inbox, Truck, SlidersHorizontal } from "lucide-react";
+import { AlertTriangle, Inbox, Package, SlidersHorizontal, Truck } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,12 @@ const KPIS = [
   { label: "Pending Receipts", value: "5", hint: "Awaiting put-away", icon: Inbox, tone: "warning" },
   { label: "Pending Deliveries", value: "8", hint: "Ready to dispatch", icon: Truck, tone: "success" },
 ] as const;
+
+const LOW_STOCK_ALERTS = [
+  { sku: "SKU-10388", name: "USB-C Dock Station", current: 12, threshold: 20, warehouse: "North Hub" },
+  { sku: "SKU-10712", name: "Pallet Wrap Heavy", current: 9, threshold: 18, warehouse: "North Hub" },
+  { sku: "SKU-10440", name: "Stainless Bolt M8", current: 0, threshold: 25, warehouse: "Port Annex" },
+];
 
 const TONE: Record<string, string> = {
   primary: "bg-accent text-accent-foreground",
@@ -95,6 +101,43 @@ export function DashboardView() {
               </Select>
             </div>
           ))}
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-card">
+        <CardHeader className="border-b">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <AlertTriangle className="size-4 text-warning" /> Low stock alerts
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-4">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {LOW_STOCK_ALERTS.map((alert) => (
+              <div key={alert.sku} className="rounded-xl border bg-muted/30 p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="font-medium">{alert.sku}</p>
+                    <p className="text-sm text-muted-foreground">{alert.name}</p>
+                  </div>
+                  <Badge variant="secondary" className="bg-warning/20 text-warning-foreground">
+                    Low stock
+                  </Badge>
+                </div>
+                <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+                  <p>
+                    Current: <span className="font-medium text-foreground">{alert.current}</span>
+                  </p>
+                  <p>
+                    Threshold: <span className="font-medium text-foreground">{alert.threshold}</span>
+                  </p>
+                  <p>Warehouse: {alert.warehouse}</p>
+                </div>
+                <Button variant="outline" className="mt-4 w-full" size="sm">
+                  Inspect stock
+                </Button>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 
