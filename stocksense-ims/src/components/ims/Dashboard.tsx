@@ -74,6 +74,21 @@ export function DashboardView() {
         ))}
       </div>
 
+      <div className="grid gap-4 lg:grid-cols-3">
+        {[
+          { title: "Inventory health", text: "3 SKUs are approaching the reorder threshold across the network." },
+          { title: "Put-away speed", text: "Receipts are moving 14% faster than last week with tighter warehouse routing." },
+          { title: "Warehouse focus", text: "North Hub and Port Annex need follow-up on open discrepancies before close of day." },
+        ].map((item) => (
+          <Card key={item.title} className="shadow-card">
+            <CardContent className="p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.title}</p>
+              <p className="mt-3 text-sm leading-6 text-foreground">{item.text}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
       <Card className="shadow-card">
         <CardHeader className="flex flex-row items-center justify-between gap-4 border-b">
           <CardTitle className="flex items-center gap-2 text-base">

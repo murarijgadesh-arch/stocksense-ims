@@ -14,6 +14,12 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (name: string) 
   const [name, setName] = useState("");
   const [otp, setOtp] = useState("");
 
+  const highlights = [
+    { value: "3x", label: "Faster cycle counts" },
+    { value: "24/7", label: "Stock visibility" },
+    { value: "99.4%", label: "Inventory accuracy" },
+  ];
+
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <aside className="relative hidden flex-col justify-between p-12 text-sidebar-foreground lg:flex bg-sidebar">
@@ -26,13 +32,24 @@ export function AuthView({ onAuthenticated }: { onAuthenticated: (name: string) 
           </span>
         </div>
         <div className="max-w-md space-y-4">
+          <div className="inline-flex w-fit items-center rounded-full border border-sidebar-border bg-sidebar-accent/20 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-sidebar-accent-foreground/80">
+            Warehouse ops, simplified
+          </div>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-sidebar-accent-foreground">
             Every unit, every warehouse, in one clear view.
           </h1>
           <p className="text-sm leading-relaxed text-sidebar-foreground/80">
             Track receipts, deliveries and adjustments across your network with real-time stock
-            accuracy.
+            accuracy, low-stock alerts, and task-ready inventory workflows.
           </p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {highlights.map(({ value, label }) => (
+              <div key={label} className="rounded-xl border border-sidebar-border bg-sidebar-accent/10 p-3">
+                <p className="text-xl font-semibold text-sidebar-accent-foreground">{value}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.14em] text-sidebar-foreground/70">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <dl className="grid grid-cols-3 gap-6 border-t border-sidebar-border pt-6">
           {[
